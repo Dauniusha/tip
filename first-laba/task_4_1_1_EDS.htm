@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Калькулятор</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script language='javascript'>
+        function exectePrefixPostfixOperation(operation) {
+            const operationCode = operation.replace('x', 'num1');
+            ans = eval(operationCode);
+            alert(operationCode + ' = ' + ans);
+        }
+
+        function execteBinaryOperation(operation) {
+            num2 = Number(prompt('Введите еще одно число:', 'число 2'));
+            ans = eval(num1 + operation + num2);
+            alert(num1 + ' ' + operation + ' ' + num2 + ' = ' + ans);
+        }
+
+        var num1, num2, ans;
+        alert('Калькулятор студента Египцева');
+        num1 = Number(prompt('Введите число:', 'число 1'));
+
+        const prefixPostfixOperators = ['++x', 'x++', '--x', 'x--'];
+        const operation = prompt(
+            `Введите знак операции: (+, -, *, /, %, ${prefixPostfixOperators.join(', ')})`,
+            'оператор',
+        );
+
+        ['++x', 'x++', '--x', 'x--'].includes(operation)
+            ? exectePrefixPostfixOperation(operation)
+            : execteBinaryOperation(operation);
+    </script>
+</head>
+</html>

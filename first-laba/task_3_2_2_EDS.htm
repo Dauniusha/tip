@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Жанглирование переменными</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script language="javascript">
+        // Переменная объявляется на лету
+        name = prompt('Как вас зовут?', 'Иванов Иван Иванович');
+
+        /* Этот многострочный комментарий облегчил
+        последующие чтение кода в 2.53 раза */
+        var age = parseInt(prompt('Сколько вам полных лет?', 20));
+
+        // Выведем приветственное сообщение
+        alert(`Приятно познакомится, ${name}! Выглядите слишком молодо, для ${age} лет!`);
+
+        // Присвоим переменные друг другу
+        [age, name] = [name, age];
+
+        // Повторим приветственное сообщение
+        alert(`Приятно познакомится, ${name}! Выглядите слишком молодо, для ${age} лет!`);
+    </script>
+</head>
+</html>
