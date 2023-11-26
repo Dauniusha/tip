@@ -1,0 +1,31 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <!-- начало скрипта защиты этой страницы паролем -->
+    <script language="JavaScript">
+      let isCorrect = false;
+
+      for (let i = 0; i < 3; i++) {
+        const password = prompt('Введите пароль, пожалуйста:');
+
+        if (password === '1234') {
+          alert('Поздравляю! Вы ввели верный пароль!');
+          isCorrect = true;
+          break;
+        } else {
+          alert('Сожалею, но вы ввели неправильный пароль. Повторите, пожалуйста!');
+        }
+      }
+
+      if (!isCorrect) {
+        window.location.href="refuse-page.html";
+      }
+    </script>
+
+    <!-- окончание скрипта защиты этой страницы паролем -->
+    <!-- далее идет что-то полезное, доступное только лишь при введении пароля -->
+    <script language="JavaScript">
+      alert("Начало невероятно полезного сценария..");
+    </script>
+  </head>
+  <body></body>
+</html>

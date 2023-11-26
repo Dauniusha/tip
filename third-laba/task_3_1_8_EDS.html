@@ -1,0 +1,26 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <script language="JavaScript">
+      const breakAt = prompt("Введите число для прерывания цикла от 1 до 10-ти", "");
+
+      var x = 0;
+      while (x < 10) {
+        if (x == breakAt) {
+          break;
+        }
+
+        alert(x);
+        x++;
+      }
+
+      for (let i = 0; i < 10; i++) {
+        if (i == breakAt) {
+          break;
+        }
+
+        alert(i);
+      }
+    </script>
+  </head>
+  <body></body>
+</html>

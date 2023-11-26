@@ -1,0 +1,20 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <script language="JavaScript">
+      var imgElements = new Array(10).fill('');
+      var extension=".jpg";
+
+      for (const x in imgElements) {
+        const counter = parseInt(x) + 1; 
+        imgElements[x] = "\n<a src=\"../image1/" + counter + extension + ">рис. " + counter + "</a>";
+      }
+
+      alert("Ссылки на мои картинки jpg-формата:" + imgElements);
+
+      if (extension != ".jpg") {
+        alert("Если это задание 356, то Вы, забыли про фото в формате jpeg");
+      }
+    </script>
+  </head>
+  <body></body>
+</html>
