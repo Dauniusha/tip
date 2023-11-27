@@ -1,0 +1,53 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <script language="JavaScript">
+      const coefficients = {
+        cels: {
+          cels: 1,
+          far: 1.8,
+          reum: 0.8,
+        },
+        far: {
+          cels: 1 / 1.8,
+          far: 1,
+          reum: 4 / 9,
+        },
+        reum: {
+          cels: 1 / 0.8,
+          far: 9 / 4,
+          reum: 1,
+        },
+      };
+
+      const localeMap = {
+        cels: 'Цельсию',
+        far: 'Фаренгейту',
+        reum: 'Реомюру',
+      };
+
+      function convert(value, from, to) {
+        return parseFloat(value) * coefficients[from][to];
+      }
+
+      function input(from, to) {
+        const fromLocale = localeMap[from];
+        const temperature = prompt(`Введите значение температуры в градусах по ${fromLocale}`, "Введите температуру");
+        const converted = convert(temperature, from, to);
+        alert(`${temperature} градусов по ${fromLocale} равно ${converted} градусов по ${localeMap[to]}`);
+      }
+    </script>
+  </head>
+  <body>
+    <input type="button" value="Переход от градусов по Цельсию к градусам по Фаренгейту" onclick="input('cels', 'far')">
+    <br><br>
+    <input type="button" value="Переход от градусов по Фаренгейту к градусам по Цельсию" onclick="input('far', 'cels')">
+    <br><br>
+    <input type="button" value="Переход от градусов по Цельсию к градусам по Реомюру" ondblclick="input('cels', 'reum')">
+    <br><br>
+    <input type="button" value="Переход от градусов по Фаренгейту к градусам по Реомюру" ondblclick="input('far', 'reum')">
+    <br><br>
+    <input type="button" value="Переход от градусов по Реомюру к градусам по Цельсию" ondblclick="input('reum', 'cels')">
+    <br><br>
+    <input type="button" value="Переход от градусов по Реомюру к градусам по Фаренгейту" ondblclick="input('reum', 'far')">
+  </body>
+</html>
