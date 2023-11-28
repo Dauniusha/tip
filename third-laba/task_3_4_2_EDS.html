@@ -1,0 +1,41 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <script language="JavaScript" src="../lib/stat_pvn.js"></script>
+    <script language="JavaScript">
+      function income(form) {
+        const incomes = Array
+          .from(form.elements)
+          .slice(0, 12)
+          .map(({ value }) => parseFloat(value));
+        
+        form.elements['minIncome'].value = min_arr(incomes);
+        form.elements['maxIncome'].value = max_arr(incomes);
+      }
+    </script>
+  </head>
+  <body bgcolor=f8f8ff>
+    <h2>Вычисление среднемесячного дохода студента Петрова</h2>
+    <p>Введите начисленные Вам суммы за месяцы:</p>
+    <form name="form1">
+      ноябрь: <input type="text" size=8>
+      декабрь: <input type="text" size=8>
+      январь: <input type="text" size=8>
+      февраль: <input type="text" size=8>
+      март: <input type="text" size=8>
+      апрель: <input type="text" size=8>
+      май: <input type="text" size=8>
+      июнь: <input type="text" size=8>
+      июль: <input type="text" size=8>
+      август: <input type="text" size=8>
+      сентябрь: <input type="text" size=8>
+      октябрь: <input type="text" size=8>
+      <br><br>
+      Максимальный доход:
+      <input type="text" size=22 name="maxIncome"><br><br>
+      Минимальный доход:
+      <input type="text" size=22 name="minIncome"><br><br>
+      <input type="button" value="Вычислить" onclick="income(form1)">&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" value="Обновить">
+    </form>
+  </body>
+</html>

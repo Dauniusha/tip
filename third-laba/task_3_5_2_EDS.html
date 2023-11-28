@@ -1,0 +1,79 @@
+<html>
+  <head>
+    <title>Пример 4_1: DHTML - применение слоев- движение изображения с вращающимся спутником</title>
+    <SCRIPT LANGUAGE="JavaScript">
+      var satellite = false;
+      var earthStop = false;
+      var direction = 1;
+
+      var timerSatellite = 10;
+
+      function initSetellite() {
+        timerSatellite = setInterval(moveImage, 10);
+      }
+
+      // начальные установки для движения по окружности
+      var angle = 270;
+      var radius = 70;
+      var xbegin = 70;
+      var ybegin = 62;
+      var d = document;
+      // движение изображения-спутника по окружности
+      function moveImage() {
+        let rad = angle * Math.PI/180;
+        // вычисление координаты следующего положения изображения
+        d.moon.style.left = xbegin + radius * Math.sin(rad);
+        d.moon.style.top = ybegin + radius * Math.cos(rad);
+        angle += direction * 1.5;
+        if (angle >= 360) angle = 0;
+        if (satellite==true) clearInterval(timerSatellite);
+      }
+
+      var timerEarth = 10;
+
+      function initEarth() {
+        timerEarth = setInterval(moveEarth, 10);
+      }
+
+      // начальные установки для движения по окружности
+      var earthAngle = 270;
+      var earthRadius = 320;
+      var earthXbegin = 750;
+      var earthYbegin = 240;
+      // движение изображения-спутника по окружности
+      function moveEarth() {
+        let rad = earthAngle * Math.PI/180;
+        earth.style.left = earthXbegin + earthRadius * Math.sin(rad);
+        earth.style.top = earthYbegin + earthRadius * Math.cos(rad);
+        earthAngle += direction * 2;
+        if (earthAngle >= 360) earthAngle = 0;
+        if (earthStop==true) clearInterval(timerEarth);
+      }
+    </SCRIPT>
+  </head>
+  <body style="margin: 0">
+    <center>
+      <h3>Пример использования слоёв: движение изображения с вращающимся спутником</h3>
+      <FORM name="form1">
+        <input type="button" value="Ускорить спутник" onclick="initSetellite()">
+        <input type="button" value="Ускорить систему" onclick="initEarth()">
+        <input type="button" value="Изменить направление движения" onclick="direction *= -1">
+        <input type="button" value="Остановить спутник" onclick="satellite=true">
+        <input type="button" value="Остановить систему" onclick="earthStop=true; satellite=true;">
+      </FORM>
+    </center>
+    <table width="100%" height="100%" border=4 bgcolor="black" bordercolor="black" style="position: relative">
+      <tr><td>
+        <div id="l1" style="position:absolute; left:24; width:178; height:176; top:101;">
+          <img src="../image1/sun.gif" name="sun" style="position:absolute; left: 50vw; top: 50vh; width: 100px; transform: translate3d(-100%, -160%, 0)">
+
+          <div id="earth" style="position:relative; left: 0; top: 0;">
+            <img src="../image1/earth.gif" style="position:absolute; left: 35; top: 30; width: 100px">
+            
+            <img src="../image1/moon.gif" name="moon" style="position:absolute; left: 0; top: 60; width: 30px">
+          </div>
+        </div>
+      </td></tr>
+    </table>
+  </body>
+</html>

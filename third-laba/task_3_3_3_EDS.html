@@ -1,0 +1,31 @@
+<html>
+  <head><title>Простейшая страничка</title>
+    <script language="JavaScript">
+      function income(form) {
+        const salaries = Array.from(form.elements).slice(0, 6);
+        const avarage = salaries
+          .map(({ value }) => parseFloat(value))
+          .reduce((acc, salary) => acc + salary, 0) / salaries.length;
+        
+        form.elements['result'].value = avarage;
+      }
+    </script>
+  </head>
+  <body bgcolor=f8f8ff>
+    <h2>Вычисление среднемесячного дохода студента Петрова</h2>
+    <p>Введите начисленные Вам суммы за месяцы:</p>
+    <form name="form1">
+      май: <input type="text" size=8>
+      июнь: <input type="text" size=8>
+      июль: <input type="text" size=8>
+      август: <input type="text" size=8>
+      сентябрь: <input type="text" size=8>
+      октябрь: <input type="text" size=8>
+      <br><br>
+      Средняя зарплата за шесть месяцев:
+      <input type="text" size=22 name="result"><br><br>
+      <input type="button" value="Вычислить" onclick="income(form1)">&nbsp;&nbsp;&nbsp;&nbsp;
+      <input type="reset" value="Обновить">
+    </form>
+  </body>
+</html>
