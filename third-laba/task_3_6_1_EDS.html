@@ -1,0 +1,17 @@
+<HTML id="n_1">
+  <HEAD id="n_2"><TITLE name="n_3">Простая страница</TITLE></HEAD>
+  <BODY id="n_4" bgcolor="F8F8FF">
+    <H2 id="n_5">Пример для работы с коллекциями элементов</H2>
+    <P id="n_6">Это 6-ой элемент коллекции (порядковый номер - 5)</P>
+    <P id="n_7">Это 7-ой элемент коллекции (порядковый номер - 6)</P>
+    <SCRIPT id="n_8" language="JavaScript">
+      console.log(document.all)
+      const result = Array.from(document.all)
+        .map((elem, i) => `Тэг с индексом ${i}: ${elem.tagName}`)
+        .join('\n');
+
+      alert(result);
+    </SCRIPT>
+  </BODY>
+</HTML>
+  
