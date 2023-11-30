@@ -1,0 +1,19 @@
+<HTML>
+  <HEAD>
+    <TITLE>Применение фильтра flipV()</TITLE>
+    <script>
+      function tstFilter1() {
+        ImageLogo1.filters.light.addPoint(55,3,1,120,300,250,250,250,20,30);
+      }
+    </script>
+  </HEAD>
+  <BODY >
+    <H3 >Эффект применения фильтра flipV().</H3>
+    <IMG ID=ImageLogo SRC="../image1/karas.jpg" >
+    <IMG ID=ImageLogo SRC="../image1/karas.jpg" style="transform: scaleY(-1);">
+
+    <H3 >Применение фильтров light() и invert().</H3>
+    <IMG ID=ImageLogo1 SRC="../image1/karas.jpg" style="filter:light();">
+    <IMG SRC="../image1/karas.jpg" style="filter:invert();">
+  </BODY>
+ </HTML>

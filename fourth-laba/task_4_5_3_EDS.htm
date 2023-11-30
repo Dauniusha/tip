@@ -1,0 +1,25 @@
+<HTML>
+  <HEAD>
+  <TITLE>Визуальные эффекты перехода revealtrans()</TITLE>
+ <script>
+  function light_logo(ii, duration) {
+    ii=Number(ii);
+    ImageLogo.filters.revealtrans.Apply();
+    ImageLogo.filters.revealtrans.transition=ii;
+    ImageLogo.filters.revealtrans.duration=Number(duration);
+    ImageLogo.style.visibility="visible";
+    ImageLogo.filters.revealtrans.play();
+  }
+ </script>
+  </HEAD>
+  <BODY ><H3 >Эффекты перехода revealtrans().</H3>
+    <IMG ID=ImageLogo SRC="../first-laba//assets/mcdonalds-bag.jpg" style="filter:revealtrans();;"><br><br><br>
+    <form name="frm" >
+      <input name="trns" TYPE="text" value=15 size=3><b><big>Введите тип: 0...23</big></b>
+      <input name="duration" TYPE="number"><b><big>Введите продолжительность</big></b>
+      <input type="button" value="<--- Применить" onclick='ImageLogo.style.visibility="hidden"; light_logo(frm.trns.value, frm.duration.value);' >
+    </form>
+    <p id="p"></p>
+  </BODY>
+ </HTML>
+ 

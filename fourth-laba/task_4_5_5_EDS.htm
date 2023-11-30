@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Product List</title>
+  <style>
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    tr:hover {
+      background-color: #ddd;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    async function fetchProductData() {
+      const response = await fetch('./db/products.txt');
+      const data = await response.text();
+      return data.split('\n').map(line => {
+        const [code, name, price, filename] = line.split('#');
+        return {code, name, price, filename};
+      });
+    }
+
+    async function fetchProductDescription(filename) {
+      const response = await fetch(filename);
+      const data = await response.text();
+      return data;
+    }
+
+    async function displayProducts() {
+      const productList = document.getElementById('productList').getElementsByTagName('tbody')[0];
+      const products = await fetchProductData();
+      
+      products.forEach(product => {
+        const row = document.createElement('tr');
+        row.innerHTML = `<td>${product.code}</td><td>${product.name}</td><td>${product.price}</td>`;
+        row.addEventListener('click', async () => {
+          const description = await fetchProductDescription(product.filename);
+          const win = window.open("", "_blank");
+          win.document.write(`<h1>${product.name}</h1><p>${description}</p>`);
+        });
+        productList.appendChild(row);
+      });
+    }
+
+    window.onload = displayProducts;
+  </script>
+</head>
+<body>
+  <h1>Список Игрушек</h1>
+  <table id="productList">
+    <thead>
+      <tr>
+        <th>Код</th>
+        <th>Название</th>
+        <th>Цена</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+</body>
+</html>
