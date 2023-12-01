@@ -27,6 +27,7 @@
       var milliseconds = parseInt((time.getMilliseconds() / 10).toFixed());
       return lead0(h) + ":" + lead0(time.getMinutes()) + ":" + lead0(time.getSeconds()) + ':' + lead0(milliseconds) + '0' + ampm;
     }
+
     function tick() {
       // Обновление значения на часах на текущее.
       document.all.clock.innerText = buildTime();
