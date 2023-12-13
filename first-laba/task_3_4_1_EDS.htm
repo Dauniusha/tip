@@ -5,32 +5,56 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Калькулятор</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/10.6.4/math.min.js"
+        integrity="sha512-iphNRh6dPbeuPGIrQbCdbBF/qcqadKWLa35YPVfMZMHBSI6PLJh1om2xCTWhpVpmUyb4IvVS9iYnnYMkleVXLA=="
+        crossorigin="anonymous"
+        referrerpolicy="no-referrer"
+        ></script> 
     <script language='javascript'>
+        var num1, num2, ans;
+
+        function showError() {
+            alert('Это не число!');
+            return;
+        }
+        
         function exectePrefixPostfixOperation(operation) {
             const operationCode = operation.replace('x', 'num1');
             ans = eval(operationCode);
-            alert(operation + ' = ' + ans);
+            alert(operation + ' = ' + ans + ' Введенное число после вывода = ' + num1);
         }
 
         function execteBinaryOperation(operation) {
             num2 = Number(prompt('Введите еще одно число:', 'число 2'));
-            ans = eval(num1 + operation + num2);
+            if (isNaN(num2)) {
+                showError();
+                return;
+            }
+            ans = math.evaluate(`${num1}${operation}${num2}`);
             alert(num1 + ' ' + operation + ' ' + num2 + ' = ' + ans);
         }
 
-        var num1, num2, ans;
-        alert('Калькулятор студента Египцева');
-        num1 = Number(prompt('Введите число:', 'число 1'));
+        function calculate() {
+            alert('Калькулятор студента Египцева');
+            num1 = Number(prompt('Введите число:', 'число 1'));
+    
+            if (isNaN(num1)) {
+                showError();
+                return;
+            }
+    
+            const prefixPostfixOperators = ['++x', 'x++', '--x', 'x--'];
+            const operation = prompt(
+                `Введите знак операции: (+, -, *, /, %, ${prefixPostfixOperators.join(', ')})`,
+                'оператор',
+            );
+    
+            ['++x', 'x++', '--x', 'x--'].includes(operation)
+                ? exectePrefixPostfixOperation(operation)
+                : execteBinaryOperation(operation);
+        }
 
-        const prefixPostfixOperators = ['++x', 'x++', '--x', 'x--'];
-        const operation = prompt(
-            `Введите знак операции: (+, -, *, /, %, ${prefixPostfixOperators.join(', ')})`,
-            'оператор',
-        );
-
-        ['++x', 'x++', '--x', 'x--'].includes(operation)
-            ? exectePrefixPostfixOperation(operation)
-            : execteBinaryOperation(operation);
+        calculate();
     </script>
 </head>
 </html>
